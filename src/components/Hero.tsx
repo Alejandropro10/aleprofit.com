@@ -3,8 +3,10 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, MessageCircle } from "lucide-react";
+import { ArrowDown, ArrowRight, MessageCircle } from "lucide-react";
 import { BRAND, CONTACT } from "@/lib/constants";
+
+const HEADLINE_LINES = ["Entrena tu cuerpo.", "Educa tu mente."];
 
 const TAGS = ["Equilibrio", "Disciplina", "Hábitos", "Salud", "Educación", "Libertad", "Superación"];
 
@@ -53,34 +55,51 @@ export default function Hero() {
             Disciplina ahora · Libertad después
           </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display text-4xl font-medium leading-[1.08] text-sand sm:text-6xl lg:text-7xl"
-          >
-            Entrena tu cuerpo.
-            <br />
-            Educa tu mente.
-            <br />
-            <span className="sunset-text italic">Encuentra tu equilibrio.</span>
-          </motion.h1>
+          <h1 className="font-display text-4xl font-medium leading-[1.08] text-sand sm:text-6xl lg:text-7xl">
+            {HEADLINE_LINES.map((line, i) => (
+              <motion.span
+                key={line}
+                initial={{ opacity: 0, y: 28 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.1 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                className="block"
+              >
+                {line}
+              </motion.span>
+            ))}
+            <motion.span
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.34, ease: [0.22, 1, 0.36, 1] }}
+              className="sunset-text block italic"
+            >
+              Encuentra tu equilibrio.
+            </motion.span>
+          </h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.28 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
             className="mx-auto mt-8 max-w-xl text-balance text-lg text-sand-dim lg:mx-0"
           >
-            {BRAND.name} no es un gimnasio ni un entrenador personal más. Es un ecosistema
-            alrededor del deporte, la salud, la educación y las experiencias — creado por{" "}
-            <span className="text-sand">{BRAND.founder}</span>.
+            Aquí no vienes solo a entrenar. Vienes a construir una versión más fuerte, más
+            equilibrada y más consciente de ti mismo.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mt-3 font-display text-base italic text-gold-light"
+          >
+            — {BRAND.coreLine}
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.42 }}
+            transition={{ duration: 0.8, delay: 0.72 }}
             className="mt-10 flex flex-col items-center gap-4 sm:flex-row"
           >
             <a
@@ -102,19 +121,40 @@ export default function Hero() {
 
           <motion.a
             href="#alejandro"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="mt-6 text-sm italic text-sand-mute underline decoration-gold/40 underline-offset-4 transition-colors hover:text-gold-light"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.86 }}
+            className="group mt-8 flex items-center gap-3 rounded-2xl border border-dusk-border bg-dusk-card/50 py-2.5 pl-2.5 pr-5 transition-colors hover:border-gold/40 hover:bg-dusk-card"
           >
-            ¿Quién hay detrás de ALEPROFIT? Conoce la historia →
+            <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border border-gold/30">
+              <Image
+                src="/alejandro-photo.jpg"
+                alt=""
+                aria-hidden
+                fill
+                sizes="44px"
+                className="object-cover"
+              />
+            </span>
+            <span className="text-left">
+              <span className="block text-xs uppercase tracking-[0.15em] text-sand-mute">
+                ¿Quién hay detrás de ALEPROFIT?
+              </span>
+              <span className="block text-sm font-semibold text-sand">
+                Conoce la historia de {BRAND.founder.split(" ")[0]}
+              </span>
+            </span>
+            <ArrowRight
+              size={18}
+              className="ml-1 shrink-0 text-gold-light transition-transform group-hover:translate-x-1"
+            />
           </motion.a>
 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-10 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 lg:justify-start"
+            transition={{ duration: 0.8, delay: 1 }}
+            className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 lg:justify-start"
           >
             {TAGS.map((tag, i) => (
               <span
