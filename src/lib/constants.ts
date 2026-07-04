@@ -15,7 +15,7 @@ export const CONTACT = {
   phoneIntl: "34633231747",
   whatsappUrl: whatsappLink("Hola ALEPROFIT, quiero más información"),
   whatsappTraining: whatsappLink(
-    "Hola Alejandro, vengo de la página web para obtener más información acerca de los entrenos."
+    "Hola Alejandro, vengo de la página web para obtener más información"
   ),
   whatsappClubProfit: whatsappLink(
     "Hola Alejandro, vengo de la página web para obtener más información acerca de club profit."
