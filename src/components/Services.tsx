@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Laptop, Crown, MapPin, Check, MessageCircle } from "lucide-react";
 import AnimateIn from "./AnimateIn";
-import { CONTACT } from "@/lib/constants";
+import { whatsappLink } from "@/lib/constants";
 
 const CATEGORIES = [
   {
@@ -19,6 +19,9 @@ const CATEGORIES = [
       "Plan de Entrenamiento Personalizado",
     ],
     note: null as string | null,
+    whatsapp: whatsappLink(
+      "Hola Alejandro, vengo de la página web para obtener más información acerca de programas online"
+    ),
   },
   {
     key: "pro",
@@ -34,6 +37,9 @@ const CATEGORIES = [
       "Valoración Inicial + Método ALEPROFIT",
     ],
     note: "Todos los Seguimientos PRO incluyen el Método ALEPROFIT sin coste adicional.",
+    whatsapp: whatsappLink(
+      "Hola Alejandro, vengo de la página web para obtener más información acerca del seguimiento pro"
+    ),
   },
   {
     key: "presencial",
@@ -42,6 +48,9 @@ const CATEGORIES = [
     intro: "El acompañamiento directo, cara a cara, donde tú decidas.",
     items: ["Sesiones individuales", "Bonos de entrenamiento", "Entrenamientos a domicilio"],
     note: null as string | null,
+    whatsapp: whatsappLink(
+      "Hola Alejandro, vengo de la página web para obtener más información acerca de los entrenamientos personales"
+    ),
   },
 ];
 
@@ -104,7 +113,7 @@ export default function Services() {
               </p>
             )}
             <a
-              href={CONTACT.whatsappUrl}
+              href={current.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 inline-flex items-center gap-2 rounded-full sunset-bg px-6 py-3 text-sm font-semibold text-dusk transition-transform hover:scale-105"
