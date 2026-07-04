@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Manrope } from "next/font/google";
+import ScrollProgress from "@/components/ScrollProgress";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -57,7 +58,10 @@ export default function RootLayout({
       lang="es"
       className={`${fraunces.variable} ${manrope.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-dusk text-sand">{children}</body>
+      <body className="min-h-full flex flex-col bg-dusk text-sand">
+        <ScrollProgress />
+        {children}
+      </body>
     </html>
   );
 }

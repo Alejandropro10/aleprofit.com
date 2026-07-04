@@ -33,7 +33,7 @@ export default function Method() {
         <div className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {STEPS.map(({ icon: Icon, label }, i) => (
             <AnimateIn key={label} delay={i * 0.06}>
-              <div className="group flex h-full flex-col items-center gap-4 rounded-2xl border border-dusk-border bg-dusk-card/60 px-5 py-8 text-center transition-all hover:border-gold/40 hover:bg-dusk-card">
+              <div className="group flex h-full flex-col items-center gap-4 rounded-2xl border border-dusk-border bg-dusk-card/60 px-5 py-8 text-center transition-all duration-300 hover:-translate-y-1.5 hover:border-gold/40 hover:bg-dusk-card hover:shadow-lg hover:shadow-ember/10">
                 <div className="flex h-14 w-14 items-center justify-center rounded-full sunset-bg text-dusk transition-transform group-hover:scale-110">
                   <Icon size={24} strokeWidth={2} />
                 </div>

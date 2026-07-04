@@ -32,8 +32,11 @@ export default function Audience() {
         <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
           {GROUPS.map(({ icon: Icon, label }, i) => (
             <AnimateIn key={label} delay={i * 0.05}>
-              <div className="flex h-full flex-col items-center gap-3 rounded-2xl border border-ink/10 bg-white/50 px-4 py-7 text-center transition-colors hover:border-ember/40">
-                <Icon size={22} className="text-ember-deep" />
+              <div className="group flex h-full flex-col items-center gap-3 rounded-2xl border border-ink/10 bg-white/50 px-4 py-7 text-center transition-all duration-300 hover:-translate-y-1.5 hover:border-ember/40 hover:bg-white hover:shadow-lg hover:shadow-ember/10">
+                <Icon
+                  size={22}
+                  className="text-ember-deep transition-transform duration-300 group-hover:scale-110"
+                />
                 <span className="text-sm font-medium text-ink">{label}</span>
               </div>
             </AnimateIn>

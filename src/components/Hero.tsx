@@ -1,25 +1,38 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, MessageCircle } from "lucide-react";
 import { BRAND, CONTACT } from "@/lib/constants";
 
 const TAGS = ["Entrenamiento", "Nutrición", "Mentalidad", "Hábitos", "Equilibrio"];
 
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  const blobY = useTransform(scrollYProgress, [0, 1], [0, 160]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, -70]);
+  const fade = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   return (
-    <section
+    <motion.section
+      ref={sectionRef}
       id="top"
+      style={{ opacity: fade }}
       className="grain relative flex min-h-screen flex-col justify-center overflow-hidden bg-dusk pt-32 pb-16 lg:pt-28"
     >
       {/* Sunset horizon backdrop */}
-      <div className="pointer-events-none absolute inset-0">
+      <motion.div style={{ y: blobY }} className="pointer-events-none absolute inset-0">
         <div className="horizon-glow absolute inset-0" />
         <div className="absolute left-1/2 top-[62%] h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-ember/25 blur-[120px]" />
         <div className="absolute right-[8%] top-[18%] h-[280px] w-[280px] rounded-full bg-gold/15 blur-[100px]" />
         <div className="absolute bottom-0 left-0 right-0 h-px sunset-bg opacity-40" />
-      </div>
+      </motion.div>
 
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-14 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
@@ -97,30 +110,32 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96, y: 24 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto w-full max-w-sm"
-        >
-          <div className="absolute -inset-4 -z-10 rounded-[2.5rem] sunset-bg opacity-20 blur-2xl" />
-          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[2rem] border border-dusk-border">
-            <Image
-              src="/hero-action.jpg"
-              alt="Alejandro Prieto Carvajal entrenando al aire libre — fuerza y equilibrio ALEPROFIT"
-              fill
-              sizes="(min-width: 1024px) 26rem, 90vw"
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-dusk via-dusk/5 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-br from-ember-deep/20 via-transparent to-transparent" />
-          </div>
-          <div className="absolute -bottom-5 left-1/2 w-[calc(100%-2.5rem)] -translate-x-1/2 rounded-2xl border border-dusk-border bg-dusk-card/90 px-5 py-3 text-center backdrop-blur-md">
-            <p className="text-xs uppercase tracking-[0.2em] text-gold-light">
-              Fuerza · Equilibrio · Superación
-            </p>
-          </div>
+        <motion.div style={{ y: imageY }} className="relative mx-auto w-full max-w-sm">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96, y: 24 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="relative"
+          >
+            <div className="absolute -inset-4 -z-10 rounded-[2.5rem] sunset-bg opacity-20 blur-2xl" />
+            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[2rem] border border-dusk-border">
+              <Image
+                src="/hero-action.jpg"
+                alt="Alejandro Prieto Carvajal entrenando al aire libre — fuerza y equilibrio ALEPROFIT"
+                fill
+                sizes="(min-width: 1024px) 26rem, 90vw"
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-dusk via-dusk/5 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-br from-ember-deep/20 via-transparent to-transparent" />
+            </div>
+            <div className="absolute -bottom-5 left-1/2 w-[calc(100%-2.5rem)] -translate-x-1/2 rounded-2xl border border-dusk-border bg-dusk-card/90 px-5 py-3 text-center backdrop-blur-md">
+              <p className="text-xs uppercase tracking-[0.2em] text-gold-light">
+                Fuerza · Equilibrio · Superación
+              </p>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
 
@@ -134,6 +149,6 @@ export default function Hero() {
       >
         <ArrowDown size={22} />
       </motion.a>
-    </section>
+    </motion.section>
   );
 }

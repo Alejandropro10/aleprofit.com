@@ -18,12 +18,33 @@ const LINKS = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [activeHash, setActiveHash] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const sections = LINKS.map((l) => document.querySelector(l.href)).filter(
+      (el): el is Element => !!el
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveHash(`#${entry.target.id}`);
+          }
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+
+    sections.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -39,13 +60,22 @@ export default function Navbar() {
 
         <ul className="hidden items-center gap-8 lg:flex">
           {LINKS.map((link) => (
-            <li key={link.href}>
+            <li key={link.href} className="relative">
               <a
                 href={link.href}
-                className="text-sm font-medium text-sand-dim transition-colors hover:text-gold"
+                className={`text-sm font-medium transition-colors hover:text-gold ${
+                  activeHash === link.href ? "text-gold-light" : "text-sand-dim"
+                }`}
               >
                 {link.label}
               </a>
+              {activeHash === link.href && (
+                <motion.span
+                  layoutId="nav-active-dot"
+                  className="absolute -bottom-2 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full sunset-bg"
+                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                />
+              )}
             </li>
           ))}
         </ul>

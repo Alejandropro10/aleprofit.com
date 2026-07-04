@@ -16,7 +16,7 @@ export default function About() {
       <div className="pointer-events-none absolute -left-40 top-1/3 h-96 w-96 rounded-full bg-ember/10 blur-[140px]" />
 
       <div className="relative mx-auto grid max-w-6xl gap-16 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-        <AnimateIn>
+        <AnimateIn direction="left" y={48}>
           <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-[2rem] border border-dusk-border bg-dusk-card">
             <Image
               src="/alejandro-photo.jpg"
@@ -37,18 +37,18 @@ export default function About() {
         </AnimateIn>
 
         <div>
-          <AnimateIn>
+          <AnimateIn direction="right">
             <span className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
               La historia
             </span>
           </AnimateIn>
-          <AnimateIn delay={0.08}>
+          <AnimateIn direction="right" delay={0.08}>
             <h2 className="mt-4 font-display text-3xl font-medium leading-tight text-sand sm:text-4xl">
               Entrenar un cuerpo sin entrenar la mente nunca fue suficiente.
             </h2>
           </AnimateIn>
 
-          <AnimateIn delay={0.16} className="mt-6 space-y-4 text-sand-dim">
+          <AnimateIn direction="right" delay={0.16} className="mt-6 space-y-4 text-sand-dim">
             <p>
               Nací en un pequeño pueblo de Extremadura y crecí rodeado de valores como el
               esfuerzo, la humildad, el respeto y el trabajo constante. Desde pequeño entendí que
