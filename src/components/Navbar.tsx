@@ -52,7 +52,7 @@ export default function Navbar() {
 
         <div className="hidden lg:block">
           <a
-            href={CONTACT.whatsappUrl}
+            href={CONTACT.whatsappTraining}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full sunset-bg px-5 py-2.5 text-sm font-semibold text-dusk shadow-lg shadow-ember/20 transition-transform hover:scale-105"
@@ -103,7 +103,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: LINKS.length * 0.06 }}
-                href={CONTACT.whatsappUrl}
+                href={CONTACT.whatsappTraining}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 inline-flex items-center gap-2 rounded-full sunset-bg px-6 py-3 font-semibold text-dusk"

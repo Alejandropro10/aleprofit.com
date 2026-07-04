@@ -57,7 +57,7 @@ export default function ClubProfit() {
 
       <AnimateIn delay={0.3} className="relative mt-14 flex justify-center">
         <a
-          href={CONTACT.whatsappUrl}
+          href={CONTACT.whatsappClubProfit}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 rounded-full bg-dusk px-8 py-4 text-base font-semibold text-sand shadow-xl transition-transform hover:scale-105"

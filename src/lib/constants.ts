@@ -6,11 +6,20 @@ export const BRAND = {
   coreLine: "La base de todo es el equilibrio.",
 };
 
+export function whatsappLink(message: string) {
+  return `https://wa.me/34633231747?text=${encodeURIComponent(message)}`;
+}
+
 export const CONTACT = {
   phoneDisplay: "633 23 17 47",
   phoneIntl: "34633231747",
-  whatsappUrl:
-    "https://wa.me/34633231747?text=Hola%20ALEPROFIT%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n",
+  whatsappUrl: whatsappLink("Hola ALEPROFIT, quiero más información"),
+  whatsappTraining: whatsappLink(
+    "Hola Alejandro, vengo de la página web para obtener más información acerca de los entrenos."
+  ),
+  whatsappClubProfit: whatsappLink(
+    "Hola Alejandro, vengo de la página web para obtener más información acerca de club profit."
+  ),
   email: "prietocarvajalfit@gmail.com",
   instagram: { handle: "@ale.profit", url: "https://instagram.com/ale.profit" },
   instagramPersonal: { handle: "@alejandrpc10", url: "https://instagram.com/alejandrpc10" },
