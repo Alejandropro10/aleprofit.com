@@ -4,6 +4,7 @@ import Manifesto from "@/components/Manifesto";
 import About from "@/components/About";
 import Philosophy from "@/components/Philosophy";
 import Method from "@/components/Method";
+import WhyAleprofit from "@/components/WhyAleprofit";
 import Services from "@/components/Services";
 import ClubProfit from "@/components/ClubProfit";
 import Audience from "@/components/Audience";
@@ -21,6 +22,7 @@ export default function Home() {
         <About />
         <Philosophy />
         <Method />
+        <WhyAleprofit />
         <Services />
         <ClubProfit />
         <Audience />

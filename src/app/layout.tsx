@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Manrope } from "next/font/google";
 import ScrollProgress from "@/components/ScrollProgress";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -16,30 +17,69 @@ const manrope = Manrope({
   weight: ["400", "500", "600", "700", "800"],
 });
 
+const TITLE =
+  "ALEPROFIT | Entrenador Personal en Extremadura — Preparador Físico y Nutricionista Deportivo";
+const DESCRIPTION =
+  "ALEPROFIT es la marca deportiva y de salud de Alejandro Prieto Carvajal: entrenador personal y preparador físico en Extremadura, nutricionista deportivo y creador del Método ALEPROFIT. Entrenamiento, nutrición, hábitos y salud mental para toda la vida.";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://aleprofit.es"),
-  title: "ALEPROFIT | Entrena tu cuerpo. Educa tu mente. Encuentra tu equilibrio.",
-  description:
-    "ALEPROFIT es una marca deportiva y de salud fundada por Alejandro Prieto Carvajal. Entrenamiento personalizado, nutrición, mentalidad y hábitos sostenibles para construir una vida más fuerte y equilibrada.",
+  title: TITLE,
+  description: DESCRIPTION,
   keywords: [
     "ALEPROFIT",
     "Alejandro Prieto Carvajal",
-    "entrenador personal Extremadura",
+    "entrenador personal en Extremadura",
+    "entrenador personal Badajoz",
+    "entrenador personal Cáceres",
+    "preparador físico",
+    "nutricionista deportivo",
     "entrenamiento online",
-    "nutrición deportiva",
-    "Club Profit",
     "entrenamiento personalizado",
+    "Club Profit",
   ],
+  alternates: {
+    canonical: "https://aleprofit.es",
+  },
   openGraph: {
-    title: "ALEPROFIT | Entrena tu cuerpo. Educa tu mente. Encuentra tu equilibrio.",
-    description:
-      "Entrenamiento, nutrición, mentalidad y hábitos sostenibles. Disciplina ahora. Libertad después.",
+    title: TITLE,
+    description: DESCRIPTION,
     url: "https://aleprofit.es",
     siteName: "ALEPROFIT",
     locale: "es_ES",
     type: "website",
+    images: ["/logo-lion.png"],
   },
   robots: { index: true, follow: true },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "ALEPROFIT",
+  description: DESCRIPTION,
+  founder: {
+    "@type": "Person",
+    name: "Alejandro Prieto Carvajal",
+    jobTitle: "Entrenador personal y preparador físico",
+  },
+  areaServed: {
+    "@type": "State",
+    name: "Extremadura, España",
+  },
+  telephone: "+34633231747",
+  email: "prietocarvajalfit@gmail.com",
+  url: "https://aleprofit.es",
+  image: "https://aleprofit.es/logo-lion.png",
+  sameAs: ["https://instagram.com/ale.profit", "https://instagram.com/alejandrpc10"],
+  priceRange: "€€",
+  serviceType: [
+    "Entrenador personal",
+    "Preparador físico",
+    "Nutricionista deportivo",
+    "Entrenamiento online",
+    "Club Profit — eventos deportivos, recreativos y educativos",
+  ],
 };
 
 export const viewport: Viewport = {
@@ -59,8 +99,13 @@ export default function RootLayout({
       className={`${fraunces.variable} ${manrope.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-dusk text-sand">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <ScrollProgress />
         {children}
+        <WhatsAppFloat />
       </body>
     </html>
   );

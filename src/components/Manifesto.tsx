@@ -21,14 +21,14 @@ export default function Manifesto() {
         </div>
 
         <AnimateIn delay={0.35} className="mt-10">
-          <p className="font-display text-3xl font-medium leading-tight text-ink sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-3xl font-medium leading-tight text-ink sm:text-4xl lg:text-5xl">
             ALEPROFIT es una marca deportiva y de salud que ayuda a las personas a mejorar su
             calidad de vida a través del{" "}
             <span className="italic text-ember-deep">entrenamiento</span>, la{" "}
             <span className="italic text-ember-deep">nutrición</span>, la{" "}
             <span className="italic text-ember-deep">educación</span> y la creación de{" "}
             <span className="italic text-ember-deep">hábitos sostenibles</span>.
-          </p>
+          </h2>
         </AnimateIn>
 
         <AnimateIn delay={0.5} className="mt-10">

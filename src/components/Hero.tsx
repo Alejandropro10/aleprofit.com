@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, MessageCircle } from "lucide-react";
 import { BRAND, CONTACT } from "@/lib/constants";
 
-const TAGS = ["Entrenamiento", "Nutrición", "Mentalidad", "Hábitos", "Equilibrio"];
+const TAGS = ["Equilibrio", "Disciplina", "Hábitos", "Salud", "Educación", "Libertad", "Superación"];
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -32,6 +32,14 @@ export default function Hero() {
         <div className="absolute left-1/2 top-[62%] h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-ember/25 blur-[120px]" />
         <div className="absolute right-[8%] top-[18%] h-[280px] w-[280px] rounded-full bg-gold/15 blur-[100px]" />
         <div className="absolute bottom-0 left-0 right-0 h-px sunset-bg opacity-40" />
+        <Image
+          src="/logo-lion.png"
+          alt=""
+          aria-hidden
+          width={900}
+          height={1020}
+          className="absolute -bottom-24 -left-24 w-[520px] max-w-none opacity-[0.06] mix-blend-screen sm:w-[680px]"
+        />
       </motion.div>
 
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-14 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
@@ -92,11 +100,21 @@ export default function Hero() {
             </a>
           </motion.div>
 
+          <motion.a
+            href="#alejandro"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mt-6 text-sm italic text-sand-mute underline decoration-gold/40 underline-offset-4 transition-colors hover:text-gold-light"
+          >
+            ¿Quién hay detrás de ALEPROFIT? Conoce la historia →
+          </motion.a>
+
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-14 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 lg:justify-start"
+            className="mt-10 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 lg:justify-start"
           >
             {TAGS.map((tag, i) => (
               <span

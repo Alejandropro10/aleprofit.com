@@ -63,11 +63,15 @@ export default function Services() {
       <div className="mx-auto max-w-5xl px-6">
         <AnimateIn className="mx-auto max-w-2xl text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.3em] text-ember-deep">
-            Servicios
+            Cómo trabajamos contigo
           </span>
           <h2 className="mt-4 font-display text-3xl font-medium leading-tight text-ink sm:text-4xl lg:text-5xl">
             Un plan adaptado a cada persona
           </h2>
+          <p className="mt-6 text-lg text-ink-dim">
+            La filosofía y el método son los mismos para todos. La forma de aplicarlos se adapta a
+            ti.
+          </p>
         </AnimateIn>
 
         <AnimateIn delay={0.1} className="mt-12 flex flex-wrap justify-center gap-3">

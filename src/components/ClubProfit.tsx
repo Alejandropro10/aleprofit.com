@@ -1,24 +1,29 @@
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Trophy, GraduationCap, PartyPopper } from "lucide-react";
 import AnimateIn from "./AnimateIn";
 import { CONTACT } from "@/lib/constants";
 
-const ACTIVITIES = [
-  "Campamentos",
-  "Eventos deportivos",
-  "Cumpleaños",
-  "Comuniones",
-  "Bautizos",
-  "Actividades recreativas",
-  "Gymkanas",
-  "Juegos cooperativos",
-  "Actividades para colegios",
-  "Actividades para ayuntamientos",
-  "Juegos acuáticos",
-  "Olimpiadas deportivas",
+const CATEGORIES = [
+  {
+    icon: Trophy,
+    title: "Deportivo",
+    items: ["Eventos deportivos", "Olimpiadas deportivas", "Gymkanas", "Juegos cooperativos", "Juegos acuáticos"],
+  },
+  {
+    icon: GraduationCap,
+    title: "Educativo",
+    items: ["Campamentos", "Actividades para colegios", "Actividades para ayuntamientos"],
+  },
+  {
+    icon: PartyPopper,
+    title: "Celebraciones",
+    items: ["Cumpleaños", "Comuniones", "Bautizos", "Actividades recreativas"],
+  },
 ];
 
+const MARQUEE = CATEGORIES.flatMap((c) => c.items);
+
 export default function ClubProfit() {
-  const loop = [...ACTIVITIES, ...ACTIVITIES];
+  const loop = [...MARQUEE, ...MARQUEE];
 
   return (
     <section
@@ -36,13 +41,32 @@ export default function ClubProfit() {
             Club Profit
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-sand/90">
-            Experiencias deportivas, recreativas y educativas. Queremos que las personas recuerden
-            nuestras actividades por cómo les hicieron sentir.
+            No es animación de cumpleaños. Es la división de ALEPROFIT dedicada a organizar
+            experiencias deportivas, recreativas y educativas — con la misma seriedad y método que
+            aplicamos al entrenamiento.
           </p>
         </AnimateIn>
+
+        <div className="mt-14 grid gap-5 sm:grid-cols-3">
+          {CATEGORIES.map(({ icon: Icon, title, items }, i) => (
+            <AnimateIn key={title} delay={i * 0.1}>
+              <div className="flex h-full flex-col items-center gap-4 rounded-2xl border border-sand/20 bg-dusk/30 px-6 py-8 text-center backdrop-blur-sm">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-dusk/60 text-gold-light">
+                  <Icon size={22} />
+                </span>
+                <h3 className="font-display text-lg text-sand">{title}</h3>
+                <ul className="space-y-1.5 text-sm text-sand/80">
+                  {items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </AnimateIn>
+          ))}
+        </div>
       </div>
 
-      <AnimateIn delay={0.2} className="relative mt-14 overflow-hidden">
+      <AnimateIn delay={0.3} className="relative mt-14 overflow-hidden">
         <div className="flex w-max gap-4 animate-marquee">
           {loop.map((activity, i) => (
             <span
@@ -55,7 +79,7 @@ export default function ClubProfit() {
         </div>
       </AnimateIn>
 
-      <AnimateIn delay={0.3} className="relative mt-14 flex justify-center">
+      <AnimateIn delay={0.4} className="relative mt-14 flex justify-center">
         <a
           href={CONTACT.whatsappClubProfit}
           target="_blank"
