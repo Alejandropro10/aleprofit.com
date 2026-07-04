@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Award, HeartPulse, ShieldCheck, Trophy } from "lucide-react";
 import AnimateIn from "./AnimateIn";
 import { BRAND } from "@/lib/constants";
@@ -17,10 +18,15 @@ export default function About() {
       <div className="relative mx-auto grid max-w-6xl gap-16 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
         <AnimateIn>
           <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-[2rem] border border-dusk-border bg-dusk-card">
-            <div className="sunset-bg absolute inset-0 opacity-25" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="font-display text-8xl italic text-sand/20">AP</span>
-            </div>
+            <Image
+              src="/alejandro-photo.jpg"
+              alt={BRAND.founder}
+              fill
+              sizes="(min-width: 1024px) 24rem, 90vw"
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-dusk via-dusk/10 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 border-t border-dusk-border bg-dusk/70 p-5 backdrop-blur-sm">
               <p className="font-display text-lg text-sand">{BRAND.founder}</p>
               <p className="text-xs uppercase tracking-[0.2em] text-gold-light">
