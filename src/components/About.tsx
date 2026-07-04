@@ -1,13 +1,14 @@
 import Image from "next/image";
-import { Award, HeartPulse, ShieldCheck, Trophy } from "lucide-react";
+import { Ambulance, BookOpen, CircleDot, GraduationCap, Volleyball } from "lucide-react";
 import AnimateIn from "./AnimateIn";
 import { BRAND } from "@/lib/constants";
 
 const CREDENTIALS = [
-  { icon: Trophy, label: "Técnico Deportivo Nivel I en Fútbol" },
-  { icon: Award, label: "Técnico Deportivo Nivel I en Pádel" },
-  { icon: HeartPulse, label: "Socorrismo y Primeros Auxilios" },
-  { icon: ShieldCheck, label: "Formación en emergencias — Cruz Roja" },
+  { icon: GraduationCap, label: "Técnico Superior en Acondicionamiento Físico" },
+  { icon: BookOpen, label: "Técnico Superior en Enseñanza y Animación Sociodeportiva" },
+  { icon: CircleDot, label: "Entrenador Nivel I de Fútbol" },
+  { icon: Volleyball, label: "Entrenador Nivel I de Pádel" },
+  { icon: Ambulance, label: "Formación en Socorrismo y Primeros Auxilios" },
 ];
 
 export default function About() {
