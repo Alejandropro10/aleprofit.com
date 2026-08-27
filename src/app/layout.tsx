@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Manrope } from "next/font/google";
+import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import "./globals.css";
@@ -23,7 +24,7 @@ const DESCRIPTION =
   "ALEPROFIT es la marca deportiva y de salud de Alejandro Prieto Carvajal: entrenador personal y preparador físico en Extremadura, nutricionista deportivo y creador del Método ALEPROFIT. Entrenamiento, nutrición, hábitos y salud mental para toda la vida.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aleprofit.es"),
+  metadataBase: new URL("https://aleprofit.com"),
   title: TITLE,
   description: DESCRIPTION,
   keywords: [
@@ -39,12 +40,12 @@ export const metadata: Metadata = {
     "Club Profit",
   ],
   alternates: {
-    canonical: "https://aleprofit.es",
+    canonical: "https://aleprofit.com",
   },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
-    url: "https://aleprofit.es",
+    url: "https://aleprofit.com",
     siteName: "ALEPROFIT",
     locale: "es_ES",
     type: "website",
@@ -53,7 +54,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const jsonLd = {
+const jsonLd = {    
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "ALEPROFIT",
@@ -69,8 +70,8 @@ const jsonLd = {
   },
   telephone: "+34633231747",
   email: "prietocarvajalfit@gmail.com",
-  url: "https://aleprofit.es",
-  image: "https://aleprofit.es/logo-lion.png",
+  url: "https://com",
+  image: "https://aleprofit.com/logo-lion.png",
   sameAs: ["https://instagram.com/ale.profit", "https://instagram.com/alejandrpc10"],
   priceRange: "€€",
   serviceType: [
@@ -103,6 +104,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <CustomCursor />
         <ScrollProgress />
         {children}
         <WhatsAppFloat />

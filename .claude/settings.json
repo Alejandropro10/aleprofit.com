@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.curves.eu)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(python shot.py)",
+      "PowerShell(py -3 \"C:\\\\Users\\\\gilma\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-gilma-aleprofit\\\\b9818902-ed3c-40f4-a233-80d01f6d03c8\\\\scratchpad\\\\shot.py\")",
+      "Bash(where python *)",
+      "Bash(where node *)",
+      "Bash(node shot.mjs)",
+      "Bash(node shot2.mjs)",
+      "Bash(node shot3.mjs)",
+      "Bash(where vercel *)",
+      "Bash(vercel --yes)",
+      "WebFetch(domain:endurancecenter.es)",
+      "Bash(ls -la *.json *.ts *.mjs)",
+      "Bash(cat tsconfig.json)",
+      "Bash(cat postcss.config.mjs)",
+      "Bash(cat next.config.ts)",
+      "Bash(cat eslint.config.mjs)",
+      "Bash(node -e \"const p=require\\('./package-lock.json'\\); console.log\\(JSON.stringify\\(p.packages['node_modules/next'], null, 2\\)\\)\")",
+      "Bash(npm config *)",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/lucide-react/package.json'\\).version\\)\")",
+      "Bash(node -e \"const m=require\\('lucide-react'\\); console.log\\(Object.keys\\(m\\).filter\\(k=>/insta|facebook|social|share/i.test\\(k\\)\\)\\)\")",
+      "Bash(python scripts/with_server.py --help)",
+      "Bash(npx playwright *)",
+      "Bash(npm run *)",
+      "Bash(echo \"started, pid $!\")",
+      "Bash(node scratch-screenshot.mjs)",
+      "Bash(node scratch-check.mjs)",
+      "Bash(npm uninstall *)",
+      "Bash(netstat -ano)",
+      "Bash(taskkill //PID 29516 //F)",
+      "Bash(npx eslint *)",
+      "Bash(echo \"exit code: $?\")",
+      "Bash(vercel deploy *)"
+    ]
+  }
+}
