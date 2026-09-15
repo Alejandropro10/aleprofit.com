@@ -11,6 +11,7 @@ import Audience from "@/components/Audience";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import Esquema from "@/components/Esquema";
 
 export default function Home() {
   return (
@@ -21,7 +22,8 @@ export default function Home() {
         <Manifesto />
         <About />
         <Philosophy />
-        <Method />
+        <Esquema/>
+        {/* <Method /> */}
         <WhyAleprofit />
         <Services />
         <ClubProfit />

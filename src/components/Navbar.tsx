@@ -9,7 +9,7 @@ import { CONTACT } from "@/lib/constants";
 const LINKS = [
   { href: "#manifiesto", label: "Manifiesto" },
   { href: "#alejandro", label: "Alejandro" },
-  { href: "#metodo", label: "Método" },
+  { href: "#esquema", label: "Esquema" },
   { href: "#servicios", label: "Servicios" },
   { href: "#club-profit", label: "Club Profit" },
   { href: "#contacto", label: "Contacto" },

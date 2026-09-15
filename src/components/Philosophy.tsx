@@ -23,7 +23,7 @@ const VALUES = [
 
 export default function Philosophy() {
   return (
-    <section className="relative bg-cream py-28 lg:py-36">
+    <section className="relative bg-cream pt-28 pb-8 lg:pt-36 lg:pb-10">
       <div className="mx-auto max-w-6xl px-6">
         <AnimateIn className="mx-auto max-w-3xl text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.3em] text-ember-deep">

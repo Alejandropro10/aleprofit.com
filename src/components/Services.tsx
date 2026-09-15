@@ -2,60 +2,81 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Laptop, Crown, MapPin, Check, MessageCircle } from "lucide-react";
+import { Laptop, ClipboardList, Dumbbell, HeartPulse, Apple, Check, MessageCircle } from "lucide-react";
 import AnimateIn from "./AnimateIn";
 import { whatsappLink } from "@/lib/constants";
 
 const CATEGORIES = [
   {
+    key: "studio",
+    label: "Training Studio",
+    icon: Dumbbell,
+    intro: "Centro de entrenamiento Torremejía · Entrenamiento · Salud · Rendimiento",
+    items: [
+      "Fuerza y movilidad · Personas mayores",
+      "Clase dirigida",
+      "Clase dirigida PRO",
+      "Clase dirigida VIP",
+      "Entrenamiento libre",
+      "Entrenamiento personal / parejas",
+    ],
+    note: "Entrevista + pruebas físicas",
+    whatsapp: whatsappLink(
+      "Hola Alejandro, vengo de la página web para obtener más información acerca de Training Studio"
+    ),
+  },
+  {
+    key: "metodo",
+    label: "Método ALEPROFIT",
+    icon: ClipboardList,
+    intro: "Valora. Entrena. Evoluciona.",
+    items: [
+      "01 · Valoración inicial",
+      "02 · Plan de entrenamiento",
+      "03 · Control de evolución",
+    ],
+    note: null,
+    whatsapp: whatsappLink(
+      "Hola Alejandro, vengo de la página web para obtener más información acerca del Método ALEPROFIT"
+    ),
+  },
+  {
+    key: "recovery",
+    label: "Recovery",
+    icon: HeartPulse,
+    intro: "Bienestar · Recuperación postesfuerzo",
+    items: ["Presoterapia Recovery"],
+    note: null,
+    whatsapp: whatsappLink(
+      "Hola Alejandro, vengo de la página web para obtener más información acerca de Recovery y presoterapia"
+    ),
+  },
+  {
+    key: "habitos",
+    label: "Hábitos saludables",
+    icon: Apple,
+    intro: "Vive mejor. Come mejor.",
+    items: ["Orientación y hábitos nutricionales"],
+    note: null,
+    whatsapp: whatsappLink(
+      "Hola Alejandro, vengo de la página web para obtener más información acerca de la orientación y los hábitos nutricionales"
+    ),
+  },
+  {
     key: "online",
-    label: "Programas Online",
+    label: "Online",
     icon: Laptop,
-    intro: "Entrena y come bien estés donde estés, con programación adaptada a ti.",
-    items: [
-      "Plan Semanal en Casa",
-      "Programación Mensual Básica",
-      "Guía Nutricional Personalizada",
-      "Plan de Entrenamiento Personalizado",
-    ],
-    note: null as string | null,
+    intro: "Planificación adaptada para ti.",
+    items: ["Online PRO"],
+    note: null,
     whatsapp: whatsappLink(
-      "Hola Alejandro, vengo de la página web para obtener más información acerca de programas online"
-    ),
-  },
-  {
-    key: "pro",
-    label: "Seguimientos PRO",
-    icon: Crown,
-    intro: "Acompañamiento cercano y continuo para resultados sostenibles.",
-    items: [
-      "Asesoramiento inicial gratuito",
-      "Seguimiento Mensual ALEPROFIT",
-      "Transformación 90 días",
-      "Oferta para parejas",
-      "Plan Anual VIP",
-      "Valoración Inicial + Método ALEPROFIT",
-    ],
-    note: "Todos los Seguimientos PRO incluyen el Método ALEPROFIT sin coste adicional.",
-    whatsapp: whatsappLink(
-      "Hola Alejandro, vengo de la página web para obtener más información acerca del seguimiento pro"
-    ),
-  },
-  {
-    key: "presencial",
-    label: "Entrenamiento Presencial",
-    icon: MapPin,
-    intro: "El acompañamiento directo, cara a cara, donde tú decidas.",
-    items: ["Sesiones individuales", "Bonos de entrenamiento", "Entrenamientos a domicilio"],
-    note: null as string | null,
-    whatsapp: whatsappLink(
-      "Hola Alejandro, vengo de la página web para obtener más información acerca de los entrenamientos personales"
+      "Hola Alejandro, vengo de la página web para obtener más información acerca de Online PRO"
     ),
   },
 ];
 
 export default function Services() {
-  const [active, setActive] = useState(CATEGORIES[1].key);
+  const [active, setActive] = useState(CATEGORIES[0].key);
   const current = CATEGORIES.find((c) => c.key === active)!;
 
   return (
@@ -78,12 +99,13 @@ export default function Services() {
           {CATEGORIES.map(({ key, label, icon: Icon }) => (
             <button
               key={key}
+              type="button"
+              aria-pressed={active === key}
               onClick={() => setActive(key)}
-              className={`flex items-center gap-2 rounded-full border px-5 py-3 text-sm font-semibold transition-colors ${
-                active === key
+              className={`flex items-center gap-2 rounded-full border px-5 py-3 text-sm font-semibold transition-colors ${active === key
                   ? "border-ember-deep bg-ink text-cream"
                   : "border-ink/15 bg-white/60 text-ink-dim hover:border-ember/40"
-              }`}
+                }`}
             >
               <Icon size={16} />
               {label}
@@ -111,6 +133,7 @@ export default function Services() {
                 </div>
               ))}
             </div>
+            
             {current.note && (
               <p className="mt-6 rounded-xl bg-ember-deep/5 px-4 py-3 text-sm italic text-ember-deep">
                 {current.note}
