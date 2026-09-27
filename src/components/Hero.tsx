@@ -178,7 +178,7 @@ export default function Hero() {
             <div className="absolute -inset-4 -z-10 rounded-[2.5rem] sunset-bg opacity-20 blur-2xl" />
             <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[2rem] border border-dusk-border">
               <Image
-                src="/hero-action.jpg"
+                src="/ale-photo.jpg"
                 alt="Alejandro Prieto Carvajal entrenando al aire libre — fuerza y equilibrio ALEPROFIT"
                 fill
                 sizes="(min-width: 1024px) 26rem, 90vw"

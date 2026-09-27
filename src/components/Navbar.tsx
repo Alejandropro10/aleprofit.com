@@ -28,6 +28,29 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    if (!open) return;
+
+    // Lock the page, while allowing the menu itself to scroll on short screens.
+    const bodyOverflow = document.body.style.overflow;
+    const rootOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const onDesktop = () => { if (desktop.matches) setOpen(false); };
+    document.addEventListener("keydown", onKeyDown);
+    desktop.addEventListener("change", onDesktop);
+    return () => {
+      document.body.style.overflow = bodyOverflow;
+      document.documentElement.style.overflow = rootOverflow;
+      document.removeEventListener("keydown", onKeyDown);
+      desktop.removeEventListener("change", onDesktop);
+    };
+  }, [open]);
+
+  useEffect(() => {
     const sections = LINKS.map((l) => document.querySelector(l.href)).filter(
       (el): el is Element => !!el
     );
@@ -48,6 +71,7 @@ export default function Navbar() {
   }, []);
 
   return (
+    <>
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-500 ${
         scrolled ? "bg-dusk/85 backdrop-blur-lg border-b border-dusk-border" : "bg-transparent"
@@ -94,6 +118,8 @@ export default function Navbar() {
 
         <button
           aria-label="Abrir menú"
+          aria-expanded={open}
+          aria-controls="mobile-menu"
           onClick={() => setOpen(true)}
           className="text-sand lg:hidden"
         >
@@ -101,13 +127,18 @@ export default function Navbar() {
         </button>
       </nav>
 
+    </header>
       <AnimatePresence>
         {open && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex flex-col bg-dusk lg:hidden"
+            id="mobile-menu"
+            role="dialog"
+            aria-label="Menú de navegación"
+            aria-modal="true"
+            className="fixed inset-0 z-[60] flex h-dvh flex-col overflow-hidden bg-dusk lg:hidden"
           >
             <div className="flex items-center justify-between px-6 py-4">
               <Logo size="sm" />
@@ -115,7 +146,7 @@ export default function Navbar() {
                 <X size={28} />
               </button>
             </div>
-            <div className="flex flex-1 flex-col items-center justify-center gap-8">
+            <div className="flex min-h-0 flex-1 flex-col items-center gap-5 overflow-y-auto overscroll-contain px-6 py-6">
               {LINKS.map((link, i) => (
                 <motion.a
                   key={link.href}
@@ -124,7 +155,7 @@ export default function Navbar() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.06 }}
-                  className="font-display text-3xl text-sand hover:text-gold"
+                  className="shrink-0 font-display text-2xl text-sand hover:text-gold"
                 >
                   {link.label}
                 </motion.a>
@@ -136,7 +167,7 @@ export default function Navbar() {
                 href={CONTACT.whatsappTraining}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center gap-2 rounded-full sunset-bg px-6 py-3 font-semibold text-dusk"
+                className="inline-flex shrink-0 items-center gap-2 rounded-full sunset-bg px-6 py-3 font-semibold text-dusk"
               >
                 <MessageCircle size={18} />
                 Escríbeme por WhatsApp
@@ -145,6 +176,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
