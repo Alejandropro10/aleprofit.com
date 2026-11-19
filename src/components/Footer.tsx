@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Logo from "./Logo";
 import { BRAND, CONTACT } from "@/lib/constants";
 
@@ -25,7 +26,7 @@ export default function Footer() {
             {LINKS.map((l) => (
               <a
                 key={l.href}
-                href={l.href}
+                href={"/"+l.href}
                 className="text-sm text-sand-dim transition-colors hover:text-gold"
               >
                 {l.label}
@@ -40,6 +41,7 @@ export default function Footer() {
           </div>
         </div>
 
+        <div className="legal-footer"><nav aria-label="Información legal"><a href="/aviso-legal">Aviso legal y condiciones de uso</a><a href="/privacidad">Privacidad</a><a href="/cookies">Cookies</a></nav><a className="legal-seal" href="https://www.gruposmz.es/eipd/empresa/entrada/sello.aspx?idE=NzU1MzU4&idC=MjQxOTQ=" target="_blank" rel="noopener noreferrer"><Image src="/legal/sello-vigila.png" alt="VigilaMisDatos: ejercer tus derechos de protección de datos" width={90} height={90}/></a></div>
         <p className="mt-12 text-center text-xs text-sand-mute/70">
           © {new Date().getFullYear()} {BRAND.name}. {BRAND.coreLine}
         </p>

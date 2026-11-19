@@ -61,6 +61,7 @@ export default function Contact() {
           </a>
         </AnimateIn>
 
+        <p className="mx-auto mt-6 max-w-xl text-sm text-sand-dim">Alejandro Prieto Carvajal tratará los datos que facilites para atender tu consulta y, en su caso, gestionar el servicio solicitado. Puedes ejercer tus derechos escribiendo a {CONTACT.email}. <a className="underline" href="/privacidad">Consulta la información de privacidad</a>.</p>
         <AnimateIn delay={0.25} className="mt-16 grid gap-3 sm:grid-cols-2">
           {CHANNELS.map(({ icon: Icon, label, sub, href }) => (
             <a
