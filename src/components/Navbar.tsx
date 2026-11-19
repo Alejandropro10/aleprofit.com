@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X, MessageCircle, UserRound } from "lucide-react";
 import Logo from "./Logo";
 import { CONTACT } from "@/lib/constants";
 
@@ -14,6 +14,8 @@ const LINKS = [
   { href: "#club-profit", label: "Club Profit" },
   { href: "#contacto", label: "Contacto" },
 ];
+
+const CLIENT_AREA_URL = "https://aleprofit-app.vercel.app";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -38,7 +40,7 @@ export default function Navbar() {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") setOpen(false);
     };
-    const desktop = window.matchMedia("(min-width: 1024px)");
+    const desktop = window.matchMedia("(min-width: 1280px)");
     const onDesktop = () => { if (desktop.matches) setOpen(false); };
     document.addEventListener("keydown", onKeyDown);
     desktop.addEventListener("change", onDesktop);
@@ -82,7 +84,7 @@ export default function Navbar() {
           <Logo size="sm" />
         </a>
 
-        <ul className="hidden items-center gap-8 lg:flex">
+        <ul className="hidden items-center gap-5 xl:flex">
           {LINKS.map((link) => (
             <li key={link.href} className="relative">
               <a
@@ -104,7 +106,16 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-3 xl:flex">
+          {(
+            <a
+              href={CLIENT_AREA_URL}
+              className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-gold/50 px-4 py-2.5 text-sm font-semibold text-gold-light transition-colors hover:bg-gold/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+            >
+              <UserRound size={16} aria-hidden="true" />
+              Área de clientes
+            </a>
+          )}
           <a
             href={CONTACT.whatsappTraining}
             target="_blank"
@@ -121,7 +132,7 @@ export default function Navbar() {
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen(true)}
-          className="text-sand lg:hidden"
+          className="text-sand xl:hidden"
         >
           <Menu size={28} />
         </button>
@@ -138,7 +149,7 @@ export default function Navbar() {
             role="dialog"
             aria-label="Menú de navegación"
             aria-modal="true"
-            className="fixed inset-0 z-[60] flex h-dvh flex-col overflow-hidden bg-dusk lg:hidden"
+            className="fixed inset-0 z-[60] flex h-dvh flex-col overflow-hidden bg-dusk xl:hidden"
           >
             <div className="flex items-center justify-between px-6 py-4">
               <Logo size="sm" />
@@ -160,6 +171,16 @@ export default function Navbar() {
                   {link.label}
                 </motion.a>
               ))}
+              {(
+                <a
+                  href={CLIENT_AREA_URL}
+                  onClick={() => setOpen(false)}
+                  className="inline-flex shrink-0 items-center gap-2 rounded-full border border-gold/50 bg-gold/10 px-6 py-3 font-semibold text-gold-light transition-colors hover:bg-gold/20 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+                >
+                  <UserRound size={18} aria-hidden="true" />
+                  Área de clientes
+                </a>
+              )}
               <motion.a
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
