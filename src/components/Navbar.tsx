@@ -15,7 +15,7 @@ const LINKS = [
   { href: "#contacto", label: "Contacto" },
 ];
 
-const CLIENT_AREA_URL = "https://aleprofit-app.vercel.app";
+const CLIENT_AREA_URL = "https://app.aleprofit.com";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
